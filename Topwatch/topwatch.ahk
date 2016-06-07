@@ -4,7 +4,6 @@ Gui, Font, S50, Courier New
 Gui, Add, Text, vTime, x:xx:xx.x
 Gui, Show, W380 H100 NoActivate, Topwatch
 Sleep 200
-GuiControl,,Time,0:00:00.0
 status = 0
 
 Loop {
@@ -12,8 +11,9 @@ Loop {
   ; Status 0: Time is 0:0:0.0. Waiting for start.
   ; Status 1: Time is running.
   ; Status 2: Time is stopped.
+  GuiControl,,Time,0:00:00.0
   while (status == 0) {
-    sleep, 1
+    sleep, 100
   }
   startTicks = %A_TickCount%
   while (status == 1) {
@@ -24,9 +24,8 @@ Loop {
     GuiControl,, Time, %timeText%
   }
   while (status == 2) {
-    sleep, 1
+    sleep, 100
   }
-  GuiControl,,Time,0:00:00.0
 }
 Return
 
@@ -64,5 +63,3 @@ padNum(num)
   padded := (StrLen(num)=1 ? "0" : "") num
   Return padded
 }
-
-Return
