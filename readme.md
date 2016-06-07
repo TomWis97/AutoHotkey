@@ -1,5 +1,5 @@
 # My AutoHotkey stuff
-I just started learning AutohotKey. idk
+I just started learning AutoHotkey. idk
 
 ## Topwatch
 A simple stopwatch written in AutoHotkey.
