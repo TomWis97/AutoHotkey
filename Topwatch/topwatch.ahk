@@ -3,7 +3,7 @@ Gui, Margin, 10, 10
 Gui, Font, S50, Courier New
 Gui, Add, Text, vTime, x:xx:xx.x
 Gui, Show, W380 H100 NoActivate, Topwatch
-Sleep 200
+Sleep 200 ; For extra dramatic effect.
 status = 0
 
 Loop {
@@ -31,24 +31,24 @@ Return
 
 F9::
   if (status == 0) {
-    status = 1
+    status = 1 ; Start stopwatch if not running.
   }
   else if (status == 1) {
-    status = 2
+    status = 2 ; Stop stopwatch, but keep displaying time.
   }
   else if (status == 2) {
-    status = 0
+    status = 0 ; Reset stopwatch.
   }
   ;msgbox, status now %status%
   Return
 
 ticksToTime(ticks){
   hours := ticks // 3600000
-  ticks := ticks - (hours * 3600000)
+  ticks := ticks - (hours * 3600000) ; idk how to do this better
   minutes := ticks // 60000
-  ticks := ticks - (minutes * 60000)
+  ticks := ticks - (minutes * 60000) ; I'm sorry.
   seconds := ticks // 1000
-  ticks := ticks - (seconds * 1000)
+  ticks := ticks - (seconds * 1000) ; :(
   milliseconds := ticks
   minutesp := padNum(minutes)
   secondsp := padNum(seconds)
@@ -60,6 +60,6 @@ ticksToTime(ticks){
 
 padNum(num)
 {
-  padded := (StrLen(num)=1 ? "0" : "") num
+  padded := (StrLen(num)=1 ? "0" : "") num ; I don't know how this works, but is works. idc
   Return padded
 }
